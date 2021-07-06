@@ -1,27 +1,43 @@
-.visualization-page{
-    display: flex;
-    height: 100vh;
-    width: 100%;
+.visualization-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
 }
 
-.main-visualization{
-    flex:1 0 65%;
-    background-color:#faf9f9;
-    display: flex;
-    overflow-y: scroll;
-    flex-wrap: wrap;
+.main-visualization {
+  flex: 1 0 65%;
+  background-color: #faf9f9;
+  display: flex;
+  overflow-y: scroll;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-visualization > *{
-    margin:10px;
+.main-visualization > * {
+  flex-flow: wrap;
+  margin: 10px;
+  width: 40%;
+  height: 250px;
+  background-color: #fff;
+  box-shadow: 1px 3px 3px #999595;
 }
-.main-visualization::-webkit-scrollbar 
-{
-    display: none;
+
+/* .main-visualization > div {
+  background-color: rgb(146, 142, 142);
+  margin: 5px;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+} */
+.main-visualization::-webkit-scrollbar {
+  display: none;
 }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-.main-visualization{
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.main-visualization {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

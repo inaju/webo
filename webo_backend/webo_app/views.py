@@ -18,45 +18,53 @@ def populate_database(request):
         research_field=ResearchField.objects.get(field_name=dataset_name)
         current_field=research_field
     except:
-        print('not present')
+        print('researh field not present, saving now')
         field=ResearchField.objects.create(field_name=dataset_name)
         
         current_field=field
 
     #save the research field if it's not present in the database
-    while length_of_data_set != item_id:
+    # while length_of_data_set != item_id:
         # if length_of_data_set == item_id:
         #     print("done populating the database")
         #     break
         # else:
+    while length_of_data_set != item_id:
 
         single_author, single_author_id, item_source, title, year, document_type, eid, link,doi, cited_by=read_csv.main_response(item_id)
         check_for_title = ResearchPaperDetail.objects.filter(title=title)
+        print(check_for_title)
         
         if check_for_title:
-            print(item_id,'present')  
+            print(item_id,'present') 
+            break
         else:
- 
             print(item_id,title," not present")
 
-            affilation_name,affiliation_city, affiliation_country, author_count, author_keywords, open_access, sponsor_number, sponsor_name=from_api.scopus_search(author_name=str(single_author),author_id_user=str(single_author_id), eid=str(eid))
-            # print(affilation_name,affiliation_city, affiliation_country, author_count, author_keywords, open_access, sponsor_number, sponsor_name)
+        # try:
+        #     affilation_name,affiliation_city, affiliation_country, author_count, author_keywords, open_access, sponsor_number, sponsor_name=from_api.scopus_search(author_name=str(single_author),author_id_user=str(single_author_id), eid=str(eid))
+        #     print(check_for_title)
+        # except Exception as e:
+        #     print(e)
+            affilation_name,affiliation_city, affiliation_country, author_count, author_keywords, open_access, sponsor_number, sponsor_name="","","","","","","",""
+            # affilation_name,affiliation_city, affiliation_country, author_count, author_keywords, open_access, sponsor_number, sponsor_name=from_api.scopus_search(author_name=str(single_author),author_id_user=str(single_author_id), eid=str(eid))
+            print(affilation_name)
             
             #save the affiliation 
             try:
 
                 affiliation_instance = Affliation.objects.get(
-                            name=affilation_name,
-                            city=affiliation_city,
-                            country=affiliation_country,)
+                            name=str(affilation_name),
+                            city=str(affiliation_city),
+                            country=str(affiliation_country),)
 
                 current_affiliation=affiliation_instance
 
             except:
                 affliation_instance = Affliation.objects.create(
-                            name=affilation_name,
-                            city=affiliation_city,
-                            country=affiliation_country,
+                            name=str(affilation_name),
+                            city=str(affiliation_city),
+                            country=str(affiliation_country),
 
                             )
                 current_affiliation=affiliation_instance
@@ -95,7 +103,7 @@ def populate_database(request):
                 year = year,
                 document_type = document_type,
                 link = link,
-                cited_by=cited_by,
+                cited_by=cited_by if type(cited_by)==int else 0,
                 affiliation=current_affiliation,
                 # author_count=author_count,
                 author_keyword=authors_keywords,
@@ -104,16 +112,16 @@ def populate_database(request):
             )
 
             print(item_id," title: "+str(check_for_title)) 
-        
-        item_id+=1
+            
+            item_id+=1
 
-        #check for duplicates and delete only one record
-        count=0
-        for item in check_for_title:
-            id=item.id
-            count+=1
-            if count == 2:
-                ResearchPaperDetail.objects.get(pk=id).delete()
+            #check for duplicates and delete only one record
+            count=0
+            for item in check_for_title:
+                id=item.id
+                count+=1
+                if count == 2:
+                    ResearchPaperDetail.objects.get(pk=id).delete()
 
 
     return HttpResponse(str(length_of_data_set)) 
