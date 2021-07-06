@@ -1,0 +1,30 @@
+.card-component{
+    width:240px;
+    height:140px;
+    box-shadow: 1px 3px 3px #999595;
+    background:#fff;
+    border-radius: 5px;
+    /* margin:5%; */
+}
+
+.card-content > p{
+    font-weight: bold;
+    color:#09a2e4;
+    font-size: 50px;
+    margin:15px;
+}
+
+.card-content > h3{
+    background-color:#263238;
+    color:#fff;
+    margin:0;
+    height:35px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight:300;
+}
+@media(max-width: 992px) {
+    .card-component {
+        width: 100%;
+    }
+}

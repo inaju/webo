@@ -1,0 +1,62 @@
+.tab-component{
+    font-size:20px;
+    font-weight:400;
+}
+
+.tab-component:hover{
+    color: black;
+    background-color:#fff;
+    border-radius: 5px;
+    width:100%;
+    padding:5px;
+}
+
+
+.link:hover >p{
+    color: #263238;
+    background-color:#fff;
+    border-radius: 5px;
+}
+
+.link{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.icon{
+    margin-right:10px;
+    margin-left:10px;
+    size:20px;
+    font-weight:500;
+    fill: #B3B3B3;
+}
+
+.account{
+    align-self: flex-start;
+    margin-top: 20px;
+
+}
+
+.real_tabs{
+    margin-top:60%;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+
+}
+
+
+.real_tabs > .tab-component{
+    margin-top:20px;
+    margin-bottom:10px;
+
+}
+
+.logout{
+    margin-top: auto;
+    margin-bottom: 20px;
+}
