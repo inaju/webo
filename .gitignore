@@ -1,12 +1,11 @@
 env
 ./env
+webo_backend\env
+webo_backend\db.sqlite3
 play.py
 ./play.py
-./read_csv.py
-/webo_app/.
 webo_backend\webo_app\migrations
-read_csv.py
 webo_backend\webo_app\read_dataset\__pycache__
 webo_backend\webo_app\__pycache__
-read_csv.py
-play.py
+*.pyc
+webo_frontend\node_modules

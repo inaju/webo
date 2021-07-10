@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import webo_app
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("webo_app.urls"))
+    path("admin/", admin.site.urls),
+    path("api/v1/", include("api.urls")),
+    path("", include("webo_app.urls")),
 ]

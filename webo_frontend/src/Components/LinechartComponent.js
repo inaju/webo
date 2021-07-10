@@ -2,8 +2,7 @@ import React from "react";
 import "./Linechart.css";
 import Chart from "react-apexcharts";
 
-function Linechart({ x_value, y_value }) {
-  console.log(y_value);
+function Linechart() {
   const data = {
     options: {
       responsive: [
@@ -15,15 +14,7 @@ function Linechart({ x_value, y_value }) {
           },
         },
       ],
-      fill: {
-        type: "gradient",
-        gradient: {
-          shadeIntensity: 0.8,
-          opacityFrom: 0.7,
-          opacityTo: 0.95,
-          stops: [0, 90, 100],
-        },
-      },
+
       chart: {
         id: "basic-bar",
 
@@ -40,14 +31,17 @@ function Linechart({ x_value, y_value }) {
 
             stroke: {
               color: "#09a2e4",
-              opacity: 0.2,
-              width: 0.3,
+              opacity: 1,
+              width: 0.5,
             },
           },
         },
       },
       xaxis: {
-        categories: x_value,
+        categories: [
+          1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+          2002,
+        ],
       },
       stroke: {
         curve: "smooth",
@@ -56,20 +50,24 @@ function Linechart({ x_value, y_value }) {
 
     series: [
       {
-        name: "series-1",
-        data: y_value,
+        name: "Conference paper",
+        data: [30, 40, 45, 50, 49, 60, 70, 91, 60, 40, 45],
+      },
+      {
+        name: "Article",
+        data: [20, 30, 65, 80, 29, 10, 40, 41, 60, 70, 25],
       },
     ],
   };
 
   return (
-    <div className="linechart-container">
+    <div className="linechartcomponent-container">
       <Chart
         options={data.options}
         series={data.series}
-        type="area"
-        height="150%"
-        width="100%"
+        type="line"
+        // height="150%"
+        // width="100%"
       />
     </div>
   );
