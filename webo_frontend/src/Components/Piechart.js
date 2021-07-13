@@ -1,31 +1,41 @@
-import React from 'react'
-import Chart from 'react-apexcharts'
+import React from "react";
+import Chart from "react-apexcharts";
+import "./Piechart.css";
+function Piechart({ document_type_x, document_type_y }) {
+  //   console.log(document_type_x, document_type_y);
+  //   console.log(datachart);
+  //   console.log(datachart);
+  const data = {
+    // series: datachart["y"],
+    series: document_type_y,
+    chartOptions: {
+      labels: document_type_x,
+      legend: {
+        position: "bottom",
+      },
 
-function Piechart({series, labels}) {
+      //   labels: datachart["x"],
+      responsive: [
+        {
+          breakpoint: undefined,
+          options: {},
+        },
+      ],
+    },
+  };
 
-    const data = {
-        series: [44, 55, 41, 17, 15],
-        chartOptions: {
-        labels: ['Apple', 'Mango', 'Orange', 'Watermelon'],
-        responsive: [{
-            breakpoint: undefined,
-            options: {},
-        }]
-
-    }
+  return (
+    <div className="piechart-container">
+      <Chart
+        options={data.chartOptions}
+        series={data.series}
+        type="pie"
+        height="88%"
+        width="95%"
+        padding="50px"
+      />
+    </div>
+  );
 }
-    
-        return (
-            <div className="piechart-container">
-                <Chart
-                options={data.chartOptions}
-                series={data.series}
-                type="pie"
-                // height="350%"
-                // width="100%"
-            />
-            </div>
-        )
-    }
 
-export default Piechart
+export default Piechart;

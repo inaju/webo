@@ -12,8 +12,10 @@ class ResearchField(models.Model):
 
 
 class ResearchPaperDetail(models.Model):
-    research_field = models.ForeignKey("ResearchField", on_delete=models.CASCADE)
-    affiliation = models.ForeignKey("Affliation", on_delete=models.CASCADE, null=True)
+    research_field = models.ForeignKey(
+        "ResearchField", on_delete=models.CASCADE)
+    affiliation = models.ForeignKey(
+        "Affliation", on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(
         "Author", on_delete=models.CASCADE, related_name="author"
     )
@@ -30,7 +32,8 @@ class ResearchPaperDetail(models.Model):
     author_keyword = models.ForeignKey(
         "AuthorKeywords", on_delete=models.CASCADE, blank=True
     )
-    sponsor = models.ForeignKey("Sponsor", on_delete=models.CASCADE, blank=True)
+    sponsor = models.ForeignKey(
+        "Sponsor", on_delete=models.CASCADE, blank=True)
     open_access = models.IntegerField()
     author_count = models.IntegerField()
 
@@ -41,8 +44,10 @@ class ResearchPaperDetail(models.Model):
 class Author(models.Model):
     name = models.CharField(max_length=10000)
     author_id = models.BigIntegerField()
-    affiliation = models.ForeignKey("Affliation", on_delete=models.CASCADE, null=True)
-    total_number_of_papers_in_field = models.BigIntegerField(default=0, null=True)
+    affiliation = models.ForeignKey(
+        "Affliation", on_delete=models.CASCADE, null=True)
+    total_number_of_papers_in_field = models.BigIntegerField(
+        default=0, null=True)
 
     def __str__(self):
         return str(self.name)
@@ -51,8 +56,10 @@ class Author(models.Model):
 class CoAuthor(models.Model):
     name = models.CharField(max_length=10000)
     author_id = models.BigIntegerField()
-    affiliation = models.ForeignKey("Affliation", on_delete=models.CASCADE, null=True)
-    total_number_of_papers_in_field = models.BigIntegerField(default=0, null=True)
+    affiliation = models.ForeignKey(
+        "Affliation", on_delete=models.CASCADE, null=True)
+    total_number_of_papers_in_field = models.BigIntegerField(
+        default=0, null=True)
 
     def __str__(self):
         return str(self.name)
@@ -68,7 +75,8 @@ class Affliation(models.Model):
 
 
 class AuthorKeywords(models.Model):
-    keyword = models.CharField(max_length=10000, unique=True, blank=True, null=True)
+    keyword = models.CharField(
+        max_length=10000, unique=True, blank=True, null=True)
 
     def __str__(self):
         return str(self.keyword)

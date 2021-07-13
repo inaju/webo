@@ -58,8 +58,8 @@ function General() {
           <button className="search-button">Search</button>
         </div>
         <div className="cards">
-          <Card title="Number of papers" value={number_of_paper} />
-          <Card title="Number of Citations" value={number_of_citations} />
+          <Card title="Number Of Papers" value={number_of_paper} />
+          <Card title="Citation Per Paper" value={number_of_citations} />
           <Card title="Author Per Paper" value={author_per_paper} />
         </div>
 

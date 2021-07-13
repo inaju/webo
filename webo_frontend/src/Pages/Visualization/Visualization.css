@@ -21,7 +21,7 @@
   flex-wrap: wrap;
   margin: 10px;
   width: 40%;
-  height: 350px;
+  height: 450px;
   background-color: #fff;
   box-shadow: 1px 3px 3px #999595;
   justify-self: center;
@@ -29,16 +29,19 @@
 
 .main-visualization > *:hover {
   border: 3.5px solid #263238;
+  border-radius: 10px;
 }
 
-/* .main-visualization > div {
-  background-color: rgb(146, 142, 142);
-  margin: 5px;
-  display: flex;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
-} */
+.chart > h3 {
+  background-color: #263238;
+  color: #fff;
+  margin: 0;
+  height: 35px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-weight: 300;
+}
+
 .main-visualization::-webkit-scrollbar {
   display: none;
 }

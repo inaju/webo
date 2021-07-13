@@ -1,6 +1,10 @@
-.piechart-container{
-    background-color:red;
-    height:45vh;
-    width:400px;
+.piechart-container {
+  height: 55vh;
+  width: 400px;
+  display: flex;
 }
 
+.piechart-container > * {
+  height: 55vh;
+  width: 400px;
+}
