@@ -4,7 +4,7 @@ import "./Piechart.css";
 function Piechart({ document_type_x, document_type_y }) {
   //   console.log(document_type_x, document_type_y);
   //   console.log(datachart);
-  //   console.log(datachart);
+  //   console.log(datachart)
   const data = {
     // series: datachart["y"],
     series: document_type_y,

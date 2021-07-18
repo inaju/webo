@@ -11,43 +11,78 @@ import LinechartComponenet from "../../Components/LinechartComponent";
 import DataTableNew from "../../Components/TableNew";
 import DataTable from "../../Components/Table";
 
-function General() {
-  const [x_value, setX_value] = useState([]);
-  const [y_value, set_Yvalue] = useState([]);
-  const [number_of_paper, setNumber_of_paper] = useState([]);
-  const [number_of_citations, setNumber_of_citations] = useState([]);
-  const [author_per_paper, setAuthor_per_paper] = useState([]);
+function General({
+  x_value,
+  y_value,
+  number_of_paper,
+  number_of_citations,
+  author_per_paper,
+}) {
+  // const [x_value, setX_value] = useState([]);
+  // const [y_value, set_Yvalue] = useState([]);
+  // const [number_of_paper, setNumber_of_paper] = useState([]);
+  // const [number_of_citations, setNumber_of_citations] = useState([]);
+  // const [author_per_paper, setAuthor_per_paper] = useState([]);
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/generalpageapi/")
-      .then((results) => results.json())
-      .then((data) => {
-        // const { name } = data.results[0];
-        console.log(data["x"]);
-        setX_value(data["x"]);
-        set_Yvalue(data["y"]);
-        setNumber_of_paper(data["number_of_papers"]);
-        setNumber_of_citations(data["number_of_citations"]);
-        setAuthor_per_paper(data["author_per_paper"]);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const data = "Communications And Networking";
 
-  const onChange = (e) => {
-    console.log(e.value);
-  };
-  const options = [
-    "Internet Of Things",
-    "Electrical Machines",
-    "Induction Motors",
-  ];
-  const defaultOption = options[0];
+  //   fetch("http://127.0.0.1:8000/api/v1/generalpageapi/post/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((results) => results.json())
+  //     .then((data) => {
+  //       // const { name } = data.results[0];
+  //       console.log(data["x"]);
+  //       setX_value(data["x"]);
+  //       set_Yvalue(data["y"]);
+  //       setNumber_of_paper(data["number_of_papers"]);
+  //       setNumber_of_citations(data["number_of_citations"]);
+  //       setAuthor_per_paper(data["author_per_paper"]);
+  //     });
+  // }, []);
+
+  // const onChange = (e) => {
+  //   console.log(e.value);
+  //   const data = e.value;
+
+  //   fetch("http://127.0.0.1:8000/api/v1/generalpageapi/post/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((results) => results.json())
+  //     .then((data) => {
+  //       // const { name } = data.results[0];
+  //       console.log(data["x"]);
+  //       setX_value(data["x"]);
+  //       set_Yvalue(data["y"]);
+  //       setNumber_of_paper(data["number_of_papers"]);
+  //       setNumber_of_citations(data["number_of_citations"]);
+  //       setAuthor_per_paper(data["author_per_paper"]);
+  //     });
+  // };
+
+  // const options = [
+  //   "Internet Of Things",
+  //   "Communications And Networking",
+  //   "Electrical Machines",
+  //   "Induction Motors",
+  // ];
+  // const defaultOption = options[0];
 
   return (
     <div className="general-component">
       <Sidebar />
 
       <div className="main-general">
-        <div className="search-field">
+        {/* <div className="search-field">
           <Dropdown
             className="dropdown"
             options={options}
@@ -56,7 +91,7 @@ function General() {
             placeholder="Select an option"
           />
           <button className="search-button">Search</button>
-        </div>
+        </div> */}
         <div className="cards">
           <Card title="Number Of Papers" value={number_of_paper} />
           <Card title="Citation Per Paper" value={number_of_citations} />
@@ -71,10 +106,11 @@ function General() {
 
         <div className="table">
           <DataTable />
+          {/* <DataTableComponent /> */}
         </div>
       </div>
 
-      <Filterbar />
+      {/* <Filterbar /> */}
     </div>
   );
 }

@@ -12,9 +12,9 @@ parent_path = os.getcwd()
 print(parent_path)
 
 dataset_path = (
-    parent_path + r"\webo_app\read_dataset\datasets\internet_of_things_maybe.csv"
+    parent_path + r"\webo_app\read_dataset\datasets\Communications_and_networking.csv"
 )
-dataset_name = "Internet Of Things"
+dataset_name = "Communications And Networking"
 
 
 def select_one_item(field, delimiter_one, delimiter_two):

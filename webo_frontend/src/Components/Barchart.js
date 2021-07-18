@@ -1,38 +1,41 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import "./Barchart.css";
 
-const state = {
-  labels: ["January", "February", "March", "April", "May"],
-  datasets: [
-    {
-      label: "Rainfall",
-      backgroundColor: "rgba(75,192,192,1)",
-      borderColor: "rgba(0,0,0,1)",
-      borderWidth: 2,
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
+function Barchart({ open_access_x_value, open_access_y_value }) {
+  const chart_data = {
+    labels: open_access_x_value,
+    datasets: [
+      {
+        label: "Rainfall",
+        backgroundColor: "#09A2E4",
+        borderColor: "#09A2E4",
+        borderWidth: 1,
+        data: open_access_y_value,
+      },
+    ],
+  };
 
-export default class Barchart extends React.Component {
-  render() {
-    return (
-      <div>
-        <Bar
-          data={state}
-          options={{
-            title: {
-              display: true,
-              text: "Average Rainfall per month",
-              fontSize: 20,
-            },
-            legend: {
-              display: true,
-              position: "right",
-            },
-          }}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="barchart-container">
+      <Bar
+        data={chart_data}
+        options={{
+          title: {
+            display: true,
+            text: "Average Rainfall per month",
+            fontSize: 20,
+          },
+          legend: {
+            display: true,
+            position: "right",
+          },
+        }}
+        height={"150%"}
+        // width={"500px"}
+      />
+    </div>
+  );
 }
+
+export default Barchart;

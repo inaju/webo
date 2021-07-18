@@ -17,7 +17,7 @@ def populate_database(request):
     dataset_name = read_csv.return_dataset_name()
 
     print(type(length_of_data_set))
-    item_id = 3570
+    item_id = 0
     current_field = ""
     current_author = ""
     current_affiliation = ""
@@ -66,7 +66,8 @@ def populate_database(request):
 
             # saving the research field
             try:
-                research_field = ResearchField.objects.get(field_name=dataset_name)
+                research_field = ResearchField.objects.get(
+                    field_name=dataset_name)
                 current_field = research_field
             except Exception as e:
                 # print(e)
@@ -84,7 +85,8 @@ def populate_database(request):
                     city=affiliation_city,
                     country=affiliation_country,
                 )
-                print(affiliation_instance, "this is affliation instance before except")
+                print(affiliation_instance,
+                      "this is affliation instance before except")
 
                 current_affiliation = affiliation_instance
 
@@ -170,7 +172,7 @@ def populate_database(request):
                     year=year,
                     document_type=document_type,
                     link=link,
-                    cited_by=cited_by,
+                    cited_by=citedby_count,
                     affiliation=current_affiliation,
                     author_count=author_count,
                     author_keyword=author_keyword_instance,
@@ -181,7 +183,8 @@ def populate_database(request):
 
             item_id += 1
             print(item_id)
-        except:
+        except Exception as e:
+            print(e)
             item_id += 1
             print("skipped: ", item_id)
 
@@ -259,7 +262,8 @@ def populate_database_(request):
                 city=affiliation_city,
                 country=affiliation_country,
             )
-            print(affiliation_instance, "this is affliation instance before except")
+            print(affiliation_instance,
+                  "this is affliation instance before except")
 
             current_affiliation = affiliation_instance
 
