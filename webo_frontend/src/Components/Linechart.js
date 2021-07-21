@@ -3,7 +3,6 @@ import "./Linechart.css";
 import Chart from "react-apexcharts";
 
 function Linechart({ x_value, y_value }) {
-  console.log(y_value);
   const data = {
     options: {
       responsive: [

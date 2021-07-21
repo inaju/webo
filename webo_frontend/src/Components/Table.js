@@ -37,24 +37,24 @@ const rows = [
     2,
     "Covenant University"
   ),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  // createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  // createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  // createData("Eclair", 262, 16.0, 24, 6.0),
+  // createData("Cupcake", 305, 3.7, 67, 4.3),
+  // createData("Gingerbread", 356, 16.0, 49, 3.9),
 
-  createData(
-    "Internet of Tthings: A Survery",
-    "Mitchel Inaju",
-    2,
-    "Covenant University"
-  ),
+  // createData(
+  //   "Internet of Tthings: A Survery",
+  //   "Mitchel Inaju",
+  //   2,
+  //   "Covenant University"
+  // ),
 
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
+  // createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  // createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  // createData("Eclair", 262, 16.0, 24, 6.0),
+  // createData("Cupcake", 305, 3.7, 67, 4.3),
+  // createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
 const useStyles = makeStyles({
@@ -64,8 +64,18 @@ const useStyles = makeStyles({
   },
 });
 
-export default function DataTable() {
+export default function DataTable({ table_data }) {
   const classes = useStyles();
+
+  // console.log(typeof table_data);
+
+  // for (const item in table_data.keys()) {
+  //   console.log(item);
+  // }
+
+  for (let [key, value] of Object.entries(table_data)) {
+    console.log(key, value);
+  }
 
   return (
     <TableContainer component={Paper}>

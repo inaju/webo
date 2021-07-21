@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import General from "./Pages/General/General";
 import Analysis from "./Pages/Analysis/Analysis";
 import Visualization from "./Pages/Visualization/Visualization";
+import Sidebar from "./Components/Sidebar/Sidebar";
 
 function App() {
   const [x_value, setX_value] = useState([]);
@@ -25,6 +27,11 @@ function App() {
 
   const [affliation_x_value, setAffliation_X_value] = useState([]);
   const [affliation_y_value, setAffliation_Y_value] = useState([]);
+
+  const [sponsor_x_value, setSponsor_X_value] = useState([]);
+  const [sponsor_y_value, setSponsor_Y_value] = useState([]);
+
+  const [table_data, setTable_data] = useState([]);
 
   const [data, setData] = useState([]);
 
@@ -59,7 +66,11 @@ function App() {
 
         setAffliation_X_value(data["affliation_response"]["x"]);
         setAffliation_Y_value(data["affliation_response"]["y"]);
-        console.log(data["document_type"]["x"], data["document_type"]["y"]);
+
+        setSponsor_X_value(data["sponsor_response"]["x"]);
+        setSponsor_Y_value(data["sponsor_response"]["y"]);
+
+        setTable_data(data["top_papers"]);
       });
   }, []);
 
@@ -76,7 +87,6 @@ function App() {
     })
       .then((results) => results.json())
       .then((data) => {
-        // const { name } = data.results[0];
         console.log(data["x"]);
         setX_value(data["x"]);
         set_Yvalue(data["y"]);
@@ -95,7 +105,11 @@ function App() {
 
         setAffliation_X_value(data["affliation_response"]["x"]);
         setAffliation_Y_value(data["affliation_response"]["y"]);
-        console.log(data["document_type"]["x"], data["document_type"]["y"]);
+
+        setSponsor_X_value(data["sponsor_response"]["x"]);
+        setSponsor_Y_value(data["sponsor_response"]["y"]);
+
+        setTable_data(data["top_papers"]);
       });
   };
 
@@ -109,20 +123,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className="search-field">
-        <Dropdown
-          className="dropdown"
-          options={options}
-          onChange={onChange}
-          value={defaultOption}
-          placeholder="Select an option"
-        />
-
-        <button className="search-button">Search</button>
-      </div>
-
+      <Sidebar />
       <Switch>
         <div className="app-component">
+          <div className="search-field">
+            <Dropdown
+              className="dropdown"
+              options={options}
+              onChange={onChange}
+              value={defaultOption}
+              placeholder="Select an option"
+            />
+
+            <button className="search-button">Search</button>
+          </div>
           <Route path="/" exact>
             <General
               x_value={x_value}
@@ -130,6 +144,7 @@ function App() {
               number_of_paper={number_of_paper}
               number_of_citations={number_of_citations}
               author_per_paper={author_per_paper}
+              table_data={table_data}
             />
           </Route>
           <Route path="/analysis" component={Analysis} />
@@ -144,6 +159,8 @@ function App() {
               open_access_y_value={open_access_y_value}
               affliation_x_value={affliation_x_value}
               affliation_y_value={affliation_y_value}
+              sponsor_x_value={sponsor_x_value}
+              sponsor_y_value={sponsor_y_value}
               data={data}
             />
           </Route>

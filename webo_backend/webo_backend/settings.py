@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "api",
     "rest_framework",
     "corsheaders",
+    "django_extensions",
+    "models2puml",
 ]
 
 MIDDLEWARE = [

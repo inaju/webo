@@ -2,11 +2,14 @@ import React from "react";
 import Chart from "react-apexcharts";
 import "./Piechart.css";
 function Piechart({ document_type_x, document_type_y }) {
-  //   console.log(document_type_x, document_type_y);
+  // console.log(document_type_x, document_type_y);
   //   console.log(datachart);
   //   console.log(datachart)
+  console.log(document_type_y);
+  console.log(document_type_x);
   const data = {
     // series: datachart["y"],
+
     series: document_type_y,
     chartOptions: {
       labels: document_type_x,

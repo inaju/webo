@@ -36,6 +36,8 @@ def select_one_item(field, delimiter_one, delimiter_two):
 
 def return_length():
     df = pd.read_csv(dataset_path, sep=",", delimiter=",")
+    # df = df[0].str.split(',', expand=True)
+
     length_of_rows = len(df.index)
     # print(length_of_rows+1)
     return int(length_of_rows)

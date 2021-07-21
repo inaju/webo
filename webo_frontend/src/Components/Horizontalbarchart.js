@@ -1,6 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-
+import "./Horizontalbar.css";
 function Horizontalbarchart({ author_x_value, author_y_value }) {
   const data = {
     labels: author_x_value,
@@ -34,8 +34,8 @@ function Horizontalbarchart({ author_x_value, author_y_value }) {
   };
 
   return (
-    <div className="horizontalbar_container">
-      <Bar data={data} width={"95%"} height={"75%"} options={options} />
+    <div className="horizontalbar-container">
+      <Bar data={data} width={"100%"} height={"95%"} options={options} />
     </div>
   );
 }

@@ -17,6 +17,7 @@ function General({
   number_of_paper,
   number_of_citations,
   author_per_paper,
+  table_data,
 }) {
   // const [x_value, setX_value] = useState([]);
   // const [y_value, set_Yvalue] = useState([]);
@@ -79,7 +80,7 @@ function General({
 
   return (
     <div className="general-component">
-      <Sidebar />
+      {/* <Sidebar /> */}
 
       <div className="main-general">
         {/* <div className="search-field">
@@ -105,7 +106,7 @@ function General({
         </div>
 
         <div className="table">
-          <DataTable />
+          <DataTable table_data={table_data} />
           {/* <DataTableComponent /> */}
         </div>
       </div>

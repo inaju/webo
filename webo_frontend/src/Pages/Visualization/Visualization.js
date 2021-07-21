@@ -21,6 +21,8 @@ function Visualization({
   open_access_y_value,
   affliation_x_value,
   affliation_y_value,
+  sponsor_x_value,
+  sponsor_y_value,
   data,
 }) {
   // const [document_type_x_value, setDocument_type_X_value] = useState([]);
@@ -59,7 +61,7 @@ function Visualization({
   // console.log(document_type_x_value, document_type_y_value);
   return (
     <div className="visualization-page">
-      <Sidebar />
+      {/* <Sidebar /> */}
 
       <div className="main-visualization">
         <div className="chart">
@@ -104,12 +106,11 @@ function Visualization({
           <LinechartComponent />
         </div>
         <div className="chart">
-          <h3>Document By Year</h3>
+          <h3>Top Funding Sponsors</h3>
 
           <Piechart
-            document_type_x={document_type_x_value}
-            document_type_y={document_type_y_value}
-            datachart={data}
+            document_type_x={sponsor_x_value}
+            document_type_y={sponsor_y_value}
           />
         </div>
         <div className="chart">
