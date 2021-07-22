@@ -1,7 +1,10 @@
 .piechart-container {
-  height: 55vh;
+  height: 60vh;
   width: 400px;
   display: flex;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
 }
 
 .piechart-container > * {

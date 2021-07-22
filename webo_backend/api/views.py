@@ -7,7 +7,7 @@ from webo_app.models import ResearchPaperDetail, Author, Affliation, ResearchFie
 import collections
 
 
-def get_frequency(frequency_list):
+def get_frequency(frequency_list, length):
 
     x_values = []
     y_values = []
@@ -26,7 +26,7 @@ def get_frequency(frequency_list):
         if items == "[No source information available]":
             pass
 
-        if count == 10:
+        if count == length:
             break
         x_values.append(items),
         y_values.append(v)
@@ -71,6 +71,7 @@ def GeneralPagePostApi(request):
         top_paper = ResearchPaperDetail.objects.filter(
             research_field=research_field_request).order_by('-cited_by')
 
+        # top paper for the table in the general page
         count = 0
         for items in top_paper:
             # print(items.title, items.cited_by, items.author, items.affiliation)
@@ -123,13 +124,14 @@ def GeneralPagePostApi(request):
             author_frequency.append(author.name)
             affiliation_frequency.append(affiliation.name)
 
-        author_frequency_response = get_frequency(author_frequency)
-        open_access_response = get_frequency(open_access_frequency)
-        affiliation_response = get_frequency(affiliation_frequency)
-        sponsor_response = get_frequency(sponsor_list)
+        author_frequency_response = get_frequency(author_frequency, 10)
+        open_access_response = get_frequency(open_access_frequency, 10)
+        affiliation_response = get_frequency(affiliation_frequency, 10)
+        sponsor_response = get_frequency(sponsor_list, 5)
 
         document_type_response = get_frequency(
-            document_type_frequency)
+            document_type_frequency, 10)
+
         frequency = collections.Counter(year_frequency)
         frequency = dict(frequency)
 

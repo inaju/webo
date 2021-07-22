@@ -35,7 +35,6 @@ function Piechart({ document_type_x, document_type_y }) {
         type="pie"
         height="88%"
         width="95%"
-        padding="50px"
       />
     </div>
   );

@@ -15,7 +15,6 @@ function Horizontalbarchart({ author_x_value, author_y_value }) {
   };
 
   const options = {
-    height: "100%",
     indexAxis: "y",
     // Elements options apply to all of the options unless overridden in a dataset
     // In this case, we are setting the border of each horizontal bar to be 2px wide
@@ -35,7 +34,7 @@ function Horizontalbarchart({ author_x_value, author_y_value }) {
 
   return (
     <div className="horizontalbar-container">
-      <Bar data={data} width={"100%"} height={"95%"} options={options} />
+      <Bar data={data} width={"100%"} height={"85%"} options={options} />
     </div>
   );
 }

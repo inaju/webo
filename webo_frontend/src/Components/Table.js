@@ -26,36 +26,36 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(title, author, no_of_citations, Institution) {
+  return { title, author, no_of_citations, Institution };
 }
 
-const rows = [
-  createData(
-    "Internet of Tthings: A Survery",
-    "Mitchel Inaju",
-    2,
-    "Covenant University"
-  ),
-  // createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  // createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  // createData("Eclair", 262, 16.0, 24, 6.0),
-  // createData("Cupcake", 305, 3.7, 67, 4.3),
-  // createData("Gingerbread", 356, 16.0, 49, 3.9),
+// const rows = [
+//   createData(
+//     "Internet of Tthings: A Survery",
+//     "Mitchel Inaju",
+//     2,
+//     "Covenant University"
+//   ),
+//   createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+//   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+//   createData("Eclair", 262, 16.0, 24, 6.0),
+//   createData("Cupcake", 305, 3.7, 67, 4.3),
+//   createData("Gingerbread", 356, 16.0, 49, 3.9),
 
-  // createData(
-  //   "Internet of Tthings: A Survery",
-  //   "Mitchel Inaju",
-  //   2,
-  //   "Covenant University"
-  // ),
+//   createData(
+//     "Internet of Tthings: A Survery",
+//     "Mitchel Inaju",
+//     2,
+//     "Covenant University"
+//   ),
 
-  // createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  // createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  // createData("Eclair", 262, 16.0, 24, 6.0),
-  // createData("Cupcake", 305, 3.7, 67, 4.3),
-  // createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
+//   createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+//   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+//   createData("Eclair", 262, 16.0, 24, 6.0),
+//   createData("Cupcake", 305, 3.7, 67, 4.3),
+//   createData("Gingerbread", 356, 16.0, 49, 3.9),
+// ];
 
 const useStyles = makeStyles({
   table: {
@@ -65,16 +65,19 @@ const useStyles = makeStyles({
 });
 
 export default function DataTable({ table_data }) {
+  const rows = [];
+
   const classes = useStyles();
 
-  // console.log(typeof table_data);
-
-  // for (const item in table_data.keys()) {
-  //   console.log(item);
-  // }
-
   for (let [key, value] of Object.entries(table_data)) {
-    console.log(key, value);
+    const row_value = createData(
+      value.title,
+      value.author,
+      value.cited_by,
+      value.affiliation
+    );
+    rows.push(row_value);
+    console.log(rows);
   }
 
   return (
@@ -90,13 +93,15 @@ export default function DataTable({ table_data }) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.title}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.title}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="right">{row.author}</StyledTableCell>
+              <StyledTableCell align="right">
+                {row.no_of_citations}
+              </StyledTableCell>
+              <StyledTableCell align="right">{row.Institution}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
